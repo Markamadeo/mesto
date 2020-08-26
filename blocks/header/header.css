@@ -1,5 +1,6 @@
 .header {
-  min-width: 68.90625%;;
+  max-width: 882px;
+  width: 68.90625%;
   min-height: 74px;
   display: flex;
   justify-content: flex-start;

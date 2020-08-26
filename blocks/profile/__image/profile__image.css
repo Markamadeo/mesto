@@ -1,0 +1,10 @@
+.profile__image {
+  padding-right: 30px;
+}
+
+@media screen and (max-width: 425px) {
+  .profile__image {
+    padding-right: 0;
+    margin-bottom: 14px;
+  }
+}
