@@ -1,0 +1,9 @@
+.page__container {
+  min-width: 68.90625%;
+}
+
+@media screen and (max-width: 425px) {
+  .page__container {
+    min-width: 88.125%;
+  }
+}
