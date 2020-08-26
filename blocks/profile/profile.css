@@ -1,6 +1,5 @@
 .profile {
   display: flex;
-  min-width: 120px;
   align-items: center;
   flex-wrap: wrap;
 }
