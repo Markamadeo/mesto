@@ -1,0 +1,11 @@
+.gallery__item-button {
+  background-image: url("../../../images/gallery__item-button-heart.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  min-width: 20.76px;
+  min-height: 18.13px;
+  margin-left: auto;
+  border: 0;
+  cursor: pointer;
+}
