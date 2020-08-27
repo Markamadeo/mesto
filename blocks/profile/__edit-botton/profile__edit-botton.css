@@ -8,6 +8,16 @@
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #FFFFFF;
+  transition: opacity 0.4s;
+  /* opacity: 1; */
+}
+
+.profile__edit-botton:hover {
+  opacity: 0.6;
+}
+
+.profile__edit-botton:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 425px) {
@@ -17,3 +27,5 @@
     padding: 5.25px;
   }
 }
+
+

@@ -8,4 +8,14 @@
   margin-left: auto;
   border: 0;
   cursor: pointer;
+  transition: opacity 0.4s;
+
+}
+
+.gallery__item-button:hover {
+  opacity: 0.6;
+}
+
+.gallery__item-button:focus {
+  outline: none;
 }

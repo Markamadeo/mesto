@@ -10,6 +10,16 @@
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(90deg);
+  transition: opacity 0.4s;
+  cursor: pointer;
+}
+
+.edit-form__close-button:hover {
+  opacity: 0.6;
+}
+
+.edit-form__close-button:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 425px) {

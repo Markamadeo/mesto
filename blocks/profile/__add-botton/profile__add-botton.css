@@ -10,6 +10,15 @@
   background-size: 22px 22px;
   border: 2px solid #FFFFFF;
   margin-left: auto;
+  transition: opacity 0.4s;
+}
+
+.profile__add-botton:hover {
+  opacity: 0.6;
+}
+
+.profile__add-botton:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 940px) {
