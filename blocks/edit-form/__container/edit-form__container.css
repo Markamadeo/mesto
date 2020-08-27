@@ -1,0 +1,17 @@
+.edit-form__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  opacity: 1;
+  z-index: 2;
+  background-color: #ffffff;
+  padding: 34px 36px 34px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .edit-form__container {
+    width: 66.125%;
+  }
+}

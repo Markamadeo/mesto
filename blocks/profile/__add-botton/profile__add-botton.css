@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 940px) {
   .profile__add-botton {
-    margin-top: 36px;
+    margin-top: 30px;
   }
 }
 
@@ -23,6 +23,5 @@
     background-size: 16px 16px;
     margin-left: 0;
     width: 100%;
-    transform: translateY(-7px);
   }
 }

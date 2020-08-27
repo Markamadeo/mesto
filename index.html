@@ -8,7 +8,17 @@
   </head>
   <body>
     <main class="page">
-      <section class="header header_shift_down">
+      <section class="edit-form edit-form_status_active">
+        <form class="edit-form__container">
+          <button class="edit-form__close-button"></button>
+          <h2 class="edit-form__title">Редактировать профиль</h2>
+          <input type="text" class="edit-form__full-name edit-form__textarea">
+          <input type="text" class="edit-form__description edit-form__textarea">
+          <input type="submit" value="Сохранить" class="edit-form__save-button">
+        </form>
+      </section>
+
+      <section class="header header_shift_down header_shift_up">
         <img src="./images/header__logo.svg" alt="Логотип" class="header__logo">
       </section>
 
@@ -82,5 +92,6 @@
         </section>
       </div>
     </main>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
