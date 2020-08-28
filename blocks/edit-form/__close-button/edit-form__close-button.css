@@ -1,12 +1,12 @@
 .edit-form__close-button {
-  width: 57px;
-  height: 57px;
+  width: 58px;
+  height: 58px;
   position: absolute;
   top: -46px;
   right: -43px;
   background-color: transparent;
   border: 0;
-  background-image: url("../../../images/edit-form_close-icon.png");
+  background-image: url("../../../images/edit-form_close-icon.svg");
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(90deg);
