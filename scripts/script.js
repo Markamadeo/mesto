@@ -1,27 +1,34 @@
-let profileEditButton = document.querySelector(".profile__edit-botton");
-let editForm = document.querySelector(".edit-form");
-let editFormFullName = document.querySelector(".edit-form__full-name");
-let editFormDescription = document.querySelector(".edit-form__description");
-let fullNameOnPage = document.querySelector(".profile__full-name");
-let DescriptionOnPage = document.querySelector(".profile__description");
-let saveButton = document.querySelector(".edit-form__save-button");
-let closeButton = document.querySelector(".edit-form__close-button");
+const editForm = document.querySelector(".edit-form");
+const profileEditButton = document.querySelector(".profile__edit-botton");
+const editFormFullName = document.querySelector(".edit-form__full-name");
+const editFormDescription = document.querySelector(".edit-form__description");
+const fullNameOnPage = document.querySelector(".profile__full-name");
+const descriptionOnPage = document.querySelector(".profile__description");
+const editFormContainer = document.querySelector(".edit-form__container");
+const closeButton = document.querySelector(".edit-form__close-button");
+const saveButton = document.querySelector(".edit-form__save-button");
 
-editFormFullName.value = fullNameOnPage.textContent;
-editFormDescription.value = DescriptionOnPage.textContent;
-
-function openCloseEdit() {
+const openForm = () => {
   editForm.classList.toggle("edit-form_status_active");
   editFormFullName.focus();
+  editFormFullName.value = fullNameOnPage.textContent;
+  editFormDescription.value = descriptionOnPage.textContent;
 }
 
-function saveProfile(evt) {
-  evt.preventDefault();
+const saveProfile = (event) => {
+  event.preventDefault();
   fullNameOnPage.textContent = editFormFullName.value;
-  DescriptionOnPage.textContent = editFormDescription.value;
-  openCloseEdit();
+  descriptionOnPage.textContent = editFormDescription.value;
+  closeForm();
 }
 
-profileEditButton.addEventListener('click', openCloseEdit);
-closeButton.addEventListener('click', openCloseEdit);
-saveButton.addEventListener('click', saveProfile);
+const closeForm = (event) => {
+  if (event.target === event.currentTarget || event.target === saveButton) {
+    editForm.classList.toggle("edit-form_status_active");
+  }
+}
+
+profileEditButton.addEventListener('click', openForm);
+closeButton.addEventListener('click', closeForm);
+editFormContainer.addEventListener('submit', saveProfile);
+editForm.addEventListener('click', closeForm);
