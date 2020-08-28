@@ -8,13 +8,13 @@
   </head>
   <body>
     <main class="page">
-      <section class="edit-form">
-        <form class="edit-form__container">
+      <section class="edit-form" >
+        <form class="edit-form__container" name="editForm">
           <button type="button" class="edit-form__close-button"></button>
           <h2 class="edit-form__title">Редактировать профиль</h2>
-          <input type="text" class="edit-form__full-name edit-form__textarea">
-          <input type="text" class="edit-form__description edit-form__textarea">
-          <input type="submit" value="Сохранить" class="edit-form__save-button">
+          <input name="fullName" type="text" class="edit-form__textinput_full-name edit-form__textinput">
+          <input name="description" type="text" class="edit-form__textinput_description edit-form__textinput">
+          <button type="submit" class="edit-form__save-button">Сохранить</button>
         </form>
       </section>
 
