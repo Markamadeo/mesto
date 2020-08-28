@@ -25,7 +25,7 @@ const saveProfile = (event) => {
   event.preventDefault();
   fullNameOnPage.textContent = editFormFullName.value;
   descriptionOnPage.textContent = editFormDescription.value;
-  closeForm(event);
+  return;
 }
 
 profileEditButton.addEventListener('click', openForm);
