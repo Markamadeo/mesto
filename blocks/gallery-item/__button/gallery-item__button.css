@@ -1,4 +1,4 @@
-.gallery__item-button {
+.gallery-item__button {
   background-image: url("../../../images/gallery__item-button-heart.svg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,10 +12,10 @@
 
 }
 
-.gallery__item-button:hover {
+.gallery-item__button:hover {
   opacity: 0.6;
 }
 
-.gallery__item-button:focus {
+.gallery-item__button:focus {
   outline: none;
 }

@@ -1,9 +1,0 @@
-.gallery_shift_down {
-  margin-bottom: 66px;
-}
-
-@media screen and (max-width: 425px) {
-  .gallery_shift_down {
-    margin-bottom: 48px;
-  }
-}
