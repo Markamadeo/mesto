@@ -1,9 +1,0 @@
-.header_shift_up {
-  margin-top: 45px;
-}
-
-@media screen and (max-width: 425px) {
-  .header_shift_up {
-    margin-top: 28px;
-  }
-}
