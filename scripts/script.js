@@ -1,4 +1,5 @@
 import { initialCards } from './data.js';
+const gallery = document.querySelector('.gallery');
 
 /* Edit form - START */
 const editForm = document.querySelector('.edit-form');
@@ -8,8 +9,8 @@ const editFormDescription = document.querySelector('.edit-form__textinput_type_d
 const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const editFormContainer = document.querySelector('.edit-form__container');
-const closeButton = document.querySelector('.edit-form__close-button');
-const saveButton = document.querySelector('.edit-form__save-button');
+const closeEditButton = document.querySelector('.edit-form__close-button');
+const saveEditButton = document.querySelector('.edit-form__save-button');
 
 const openEditForm = () => {
   editFormFullName.value = fullNameOnPage.textContent;
@@ -18,8 +19,8 @@ const openEditForm = () => {
   editFormFullName.focus();
 };
 
-const closeForm = (event) => {
-  if (event.target === event.currentTarget || event.target === saveButton || event.target === closeButton) {
+const closeEditForm = (event) => {
+  if (event.target === event.currentTarget || event.target === saveEditButton || event.target === closeEditButton) {
     editForm.classList.toggle('edit-form_status_active');
   }
 };
@@ -29,10 +30,52 @@ const saveProfile = (event) => {
   fullNameOnPage.textContent = editFormFullName.value;
   descriptionOnPage.textContent = editFormDescription.value;
 };
+
+profileEditButton.addEventListener('click', openEditForm);
+editFormContainer.addEventListener('submit', saveProfile);
+editForm.addEventListener('click', closeEditForm);
 /*  Edit form - END */
 
+/* Adding form - START */
+const addingForm = document.querySelector('.adding-form');
+const profileAddingButton = document.querySelector('.profile__add-botton');
+const addingFormName = document.querySelector('.adding-form__textinput_type_name');
+const addingFormLinkAdress = document.querySelector('.adding-form__textinput_type_link-adress');
+const addingFormAddButton = document.querySelector('.adding-form__add-button');
+const addingFormCloseButton = document.querySelector('.adding-form__close-button');
+const addingFormContainer = document.querySelector('.adding-form__container');
+
+
+const openAddingForm = () => {
+  addingFormName.value = "Название";
+  addingFormLinkAdress.value = "Ссылка на картинку";
+  addingForm.classList.toggle('adding-form_status_active');
+  addingFormName.focus();
+};
+
+const addNewCard = (event) => {
+  event.preventDefault();
+  const card = galleryItem.cloneNode(true);
+  card.querySelector('.gallery-item').setAttribute('data-index', `${gallery.children.length}`);
+  card.querySelector('.gallery-item__image').setAttribute('src', `${addingFormLinkAdress.value}`);
+  card.querySelector('.gallery-item__image').setAttribute('alt', `${addingFormName.value}`);
+  card.querySelector('.gallery-item__title').textContent = addingFormName.value;
+  gallery.prepend(card);
+};
+
+const closeAddingForm = (event) => {
+  if (event.target === event.currentTarget || event.target === addingFormAddButton || event.target === addingFormCloseButton) {
+    addingForm.classList.toggle('adding-form_status_active');
+  }
+};
+profileAddingButton.addEventListener('click', openAddingForm);
+addingFormContainer.addEventListener('submit', addNewCard);
+addingForm.addEventListener('click', closeAddingForm);
+
+/* Adding form - END */
+
+
 /* Init Cards in Gallary - START */
-const gallery = document.querySelector('.gallery');
 const galleryItem = document.querySelector('#gallery-item').content;
 
 const renderGalleryItems = () => {
@@ -47,9 +90,6 @@ const renderGalleryItems = () => {
 };
 /* Init Cards in Gallary - END */
 
-
-
 renderGalleryItems();
-profileEditButton.addEventListener('click', openEditForm);
-editFormContainer.addEventListener('submit', saveProfile);
-editForm.addEventListener('click', closeForm);
+
+

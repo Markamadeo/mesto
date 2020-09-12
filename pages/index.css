@@ -33,7 +33,7 @@
 @import url("../blocks/adding-form/adding-form.css");
 @import url("../blocks/adding-form/_status/adding-form_status_active.css");
 @import url("../blocks/adding-form/__container/adding-form__container.css");
-@import url("../blocks/adding-form/__save-button/adding-form__save-button.css");
+@import url("../blocks/adding-form/__add-button/adding-form__add-button.css");
 @import url("../blocks/adding-form/__title/adding-form__title.css");
 @import url("../blocks/adding-form/__close-button/adding-form__close-button.css");
 @import url("../blocks/adding-form/__textinput/adding-form__textinput.css");

@@ -1,4 +1,4 @@
-.adding-form__save-button {
+.adding-form__add-button {
   min-height: 50px;
   background-color: #000000;
   font-style: normal;
@@ -13,10 +13,10 @@
   cursor: pointer;
 }
 
-.adding-form__save-button:hover {
+.adding-form__add-button:hover {
   opacity: 0.8;
 }
 
-.adding-form__save-button:focus {
+.adding-form__add-button:focus {
   outline: none;
 }
