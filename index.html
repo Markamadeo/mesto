@@ -38,53 +38,6 @@
         </section>
 
         <section class="gallery gallery_shift_down">
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__Karachaevsk.jpg" alt="Изображение г.Карачаевск">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Карачаевск</h2>
-              <button type="button" class="gallery-item__button"></button>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__mount-Elbrus.jpg" alt="Изображение горы Эльбрус">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Гора Эльбрус</h2>
-              <button class="gallery-item__button"></button>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__mounts-Dombay.jpg" alt="Горная территория Домбай">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Домбай</h2>
-              <button class="gallery-item__button"></button>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__mount-Elbrus.jpg" alt="Изображение горы Эльбрус">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Гора Эльбрус</h2>
-              <button class="gallery-item__button"></button>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__mounts-Dombay.jpg" alt="Горная территория Домбай">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Домбай</h2>
-              <button class="gallery-item__button"></button>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <img class="gallery-item__image" src="./images/gallery__Karachaevsk.jpg" alt="Изображение г.Карачаевск">
-            <div class="gallery-item__content">
-              <h2 class="gallery-item__title">Карачаево-Черкесия</h2>
-              <button class="gallery-item__button"></button>
-            </div>
-          </article>
         </section>
 
         <footer class="footer">
@@ -92,6 +45,15 @@
         </footer>
       </div>
     </main>
-    <script src="./scripts/script.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
+    <template id="gallery-item">
+      <article class="gallery-item" data-index="">
+        <img class="gallery-item__image" src="" alt="">
+        <div class="gallery-item__content">
+          <h2 class="gallery-item__title"></h2>
+          <button type="button" class="gallery-item__heart-button"></button>
+        </div>
+      </article>
+    </template>
   </body>
 </html>

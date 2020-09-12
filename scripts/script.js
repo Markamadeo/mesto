@@ -1,3 +1,6 @@
+import { initialCards } from './data.js';
+
+/* Edit form - START */
 const editForm = document.querySelector('.edit-form');
 const profileEditButton = document.querySelector('.profile__edit-botton');
 const editFormFullName = document.querySelector('.edit-form__textinput_type_full-name');
@@ -26,7 +29,25 @@ const saveProfile = (event) => {
   fullNameOnPage.textContent = editFormFullName.value;
   descriptionOnPage.textContent = editFormDescription.value;
 };
+/*  Edit form - END */
 
+/* Init Cards in Gallary - START */
+const gallery = document.querySelector('.gallery');
+const galleryItem = document.querySelector('#gallery-item').content;
+
+const renderGalleryItems = () => {
+  initialCards.forEach((item, index) => {
+    const card = galleryItem.cloneNode(true);
+    card.querySelector('.gallery-item').setAttribute('data-index', `${index}`);
+    card.querySelector('.gallery-item__image').setAttribute('src', `${item.link}`);
+    card.querySelector('.gallery-item__image').setAttribute('alt', `${item.name}`);
+    card.querySelector('.gallery-item__title').textContent = item.name;
+    gallery.append(card);
+  });
+};
+/* Init Cards in Gallary - END */
+
+renderGalleryItems();
 profileEditButton.addEventListener('click', openForm);
 closeButton.addEventListener('click', closeForm);
 editFormContainer.addEventListener('submit', saveProfile);

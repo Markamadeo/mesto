@@ -2,7 +2,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-width: 87.23402455%;
+  width: 100%;
   min-height: 79px;
-  margin: auto;
+  padding: 0 15px 0 21px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }

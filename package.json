@@ -1,6 +1,7 @@
 {
   "name": "mesto",
   "version": "1.0.0",
+  "type": "module",
   "description": "Проект Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.",
   "main": "index.js",
   "scripts": {
