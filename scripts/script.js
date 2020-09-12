@@ -11,7 +11,7 @@ const editFormContainer = document.querySelector('.edit-form__container');
 const closeButton = document.querySelector('.edit-form__close-button');
 const saveButton = document.querySelector('.edit-form__save-button');
 
-const openForm = () => {
+const openEditForm = () => {
   editFormFullName.value = fullNameOnPage.textContent;
   editFormDescription.value = descriptionOnPage.textContent;
   editForm.classList.toggle('edit-form_status_active');
@@ -19,7 +19,7 @@ const openForm = () => {
 };
 
 const closeForm = (event) => {
-  if (event.target === event.currentTarget || event.target === saveButton) {
+  if (event.target === event.currentTarget || event.target === saveButton || event.target === closeButton) {
     editForm.classList.toggle('edit-form_status_active');
   }
 };
@@ -47,8 +47,9 @@ const renderGalleryItems = () => {
 };
 /* Init Cards in Gallary - END */
 
+
+
 renderGalleryItems();
-profileEditButton.addEventListener('click', openForm);
-closeButton.addEventListener('click', closeForm);
+profileEditButton.addEventListener('click', openEditForm);
 editFormContainer.addEventListener('submit', saveProfile);
 editForm.addEventListener('click', closeForm);

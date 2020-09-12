@@ -1,0 +1,21 @@
+.adding-form__container {
+  width: 100%;
+  max-width: 430px;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  opacity: 1;
+  z-index: 2;
+  background-color: #ffffff;
+  padding: 34px 36px 36px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 522px) {
+  .adding-form__container {
+    max-width: 280px;
+  }
+}
