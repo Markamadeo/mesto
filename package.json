@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint ./scripts",
+    "eslintFix": "eslint ./scripts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Markamadeo/mesto.git"
+  },
+  "author": "Artem Kulakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Markamadeo/mesto/issues"
+  },
+  "homepage": "https://github.com/Markamadeo/mesto#readme",
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
