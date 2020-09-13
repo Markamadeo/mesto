@@ -2,7 +2,7 @@ import { initialCards } from './data.js';
 const gallery = document.querySelector('.gallery');
 const galleryItem = document.querySelector('#gallery-item').content;
 
-/* Edit form - START */
+/* POPUP: Edit form */
 const editForm = document.querySelector('.edit-form');
 const profileEditButton = document.querySelector('.profile__edit-botton');
 const editFormFullName = document.querySelector('.edit-form__textinput_type_full-name');
@@ -35,9 +35,9 @@ const saveProfile = (event) => {
 profileEditButton.addEventListener('click', openEditForm);
 editFormContainer.addEventListener('submit', saveProfile);
 editForm.addEventListener('click', closeEditForm);
-/*  Edit form - END */
+/* POPUP: Edit form - END */
 
-/* Adding form - START */
+/* POPUP: Adding cards form */
 const addingForm = document.querySelector('.adding-form');
 const profileAddingButton = document.querySelector('.profile__add-botton');
 const addingFormName = document.querySelector('.adding-form__textinput_type_name');
@@ -71,16 +71,40 @@ const closeAddingForm = (event) => {
 profileAddingButton.addEventListener('click', openAddingForm);
 addingFormContainer.addEventListener('submit', addNewCard);
 addingForm.addEventListener('click', closeAddingForm);
-/* Adding form - END */
+/* POPUP: Adding cards form - END */
 
-/* Event cards - START */
+/* POPUP: Foto viewer */
+const fotoViewerImg = document.querySelector('.foto-viewer__img');
+const fotoViewer = document.querySelector('.foto-viewer');
+const closeFotoViewerButton = document.querySelector('.foto-viewer__close-button');
+const fotoCaption = document.querySelector('.foto-viewer__description');
+
+const closeFotoViewer = (event) => {
+  if (event.target === event.currentTarget || event.target === closeFotoViewerButton) {
+    fotoViewer.classList.toggle('foto-viewer_status_active');
+  }
+}
+
+const openFotoViewer = (event) => {
+  const linkAdress = event.target.getAttribute('src');
+  const imgName = event.target.getAttribute('alt');
+  fotoViewerImg.setAttribute('src', linkAdress);
+  fotoViewerImg.setAttribute('alt', imgName);
+  fotoCaption.textContent = imgName;
+  fotoViewer.classList.toggle('foto-viewer_status_active');
+}
+
+fotoViewer.addEventListener('click', closeFotoViewer);
+/* Foto viewer - END */
+
+/* Event cards */
 const eventCards = (event) => {
   if (event.target.classList.contains('gallery-item__heart-button')) {
     event.target.classList.toggle('gallery-item__heart-button_type_active');
   }
 
   if (event.target.classList.contains('gallery-item__image')) {
-    console.log('open foto-viewer');
+    openFotoViewer(event);
   }
 
   if (event.target.classList.contains('gallery-item__trash-button')) {
@@ -92,7 +116,7 @@ const eventCards = (event) => {
 gallery.addEventListener('click', eventCards);
 /* Event cards - END */
 
-/* Init Cards in Gallary - START */
+/* Init Cards in Gallary */
 const renderGalleryItems = () => {
   initialCards.forEach((item, index) => {
     const card = galleryItem.cloneNode(true);

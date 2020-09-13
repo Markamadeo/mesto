@@ -46,3 +46,4 @@
 @import url("../blocks/foto-viewer/__container/foto-viewer__container.css");
 @import url("../blocks/foto-viewer/__description/foto-viewer__description.css");
 @import url("../blocks/foto-viewer/__img/foto-viewer__img.css");
+@import url("../blocks/foto-viewer/_status/foto-viewer_status_active.css");
