@@ -2,8 +2,11 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  display: none;
+  display: flex;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
 }
 
 .edit-form::after {

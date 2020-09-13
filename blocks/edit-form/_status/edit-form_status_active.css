@@ -1,3 +1,4 @@
 .edit-form_status_active {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
 }
