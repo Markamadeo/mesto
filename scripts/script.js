@@ -45,7 +45,6 @@ const addingFormAddButton = document.querySelector('.adding-form__add-button');
 const addingFormCloseButton = document.querySelector('.adding-form__close-button');
 const addingFormContainer = document.querySelector('.adding-form__container');
 
-
 const openAddingForm = () => {
   addingFormName.value = "Название";
   addingFormLinkAdress.value = "Ссылка на картинку";
@@ -71,9 +70,27 @@ const closeAddingForm = (event) => {
 profileAddingButton.addEventListener('click', openAddingForm);
 addingFormContainer.addEventListener('submit', addNewCard);
 addingForm.addEventListener('click', closeAddingForm);
-
 /* Adding form - END */
 
+/* Interactive like button - START */
+const activeLikeButton = (event) => {
+  if (event.target.classList.contains('gallery-item__heart-button')) {
+    event.target.classList.toggle('gallery-item__heart-button_type_active');
+  }
+}
+
+gallery.addEventListener('click', activeLikeButton);
+/* Interactive like button - END */
+
+/* Foto viewer - START */
+// const openFotoViewer = (event) => {
+//   if (event.target.classList.contains('gallery-item__image')) {
+
+//   }
+// }
+
+// gallery.addEventListener('click', openFotoViewer);
+/* Foto viewer - END */
 
 /* Init Cards in Gallary - START */
 const galleryItem = document.querySelector('#gallery-item').content;
@@ -89,6 +106,7 @@ const renderGalleryItems = () => {
   });
 };
 /* Init Cards in Gallary - END */
+
 
 renderGalleryItems();
 
