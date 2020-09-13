@@ -1,5 +1,6 @@
 import { initialCards } from './data.js';
 const gallery = document.querySelector('.gallery');
+const galleryItem = document.querySelector('#gallery-item').content;
 
 /* Edit form - START */
 const editForm = document.querySelector('.edit-form');
@@ -46,8 +47,8 @@ const addingFormCloseButton = document.querySelector('.adding-form__close-button
 const addingFormContainer = document.querySelector('.adding-form__container');
 
 const openAddingForm = () => {
-  addingFormName.value = "Название";
-  addingFormLinkAdress.value = "Ссылка на картинку";
+  addingFormName.value = 'Название';
+  addingFormLinkAdress.value = 'Ссылка на картинку';
   addingForm.classList.toggle('adding-form_status_active');
   addingFormName.focus();
 };
@@ -72,29 +73,26 @@ addingFormContainer.addEventListener('submit', addNewCard);
 addingForm.addEventListener('click', closeAddingForm);
 /* Adding form - END */
 
-/* Interactive like button - START */
-const activeLikeButton = (event) => {
+/* Event cards - START */
+const eventCards = (event) => {
   if (event.target.classList.contains('gallery-item__heart-button')) {
     event.target.classList.toggle('gallery-item__heart-button_type_active');
   }
-}
 
-gallery.addEventListener('click', activeLikeButton);
-/* Interactive like button - END */
+  if (event.target.classList.contains('gallery-item__image')) {
+    console.log('open foto-viewer');
+  }
 
-/* Foto viewer - START */
-// const openFotoViewer = (event) => {
-//   if (event.target.classList.contains('gallery-item__image')) {
+  if (event.target.classList.contains('gallery-item__trash-button')) {
+    const listItem = event.target.closest('.gallery-item');
+    listItem.remove();
+  }
+};
 
-//   }
-// }
-
-// gallery.addEventListener('click', openFotoViewer);
-/* Foto viewer - END */
+gallery.addEventListener('click', eventCards);
+/* Event cards - END */
 
 /* Init Cards in Gallary - START */
-const galleryItem = document.querySelector('#gallery-item').content;
-
 const renderGalleryItems = () => {
   initialCards.forEach((item, index) => {
     const card = galleryItem.cloneNode(true);
@@ -107,7 +105,4 @@ const renderGalleryItems = () => {
 };
 /* Init Cards in Gallary - END */
 
-
 renderGalleryItems();
-
-
