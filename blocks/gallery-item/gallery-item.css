@@ -1,4 +1,5 @@
 .gallery-item {
+  position: relative;
   min-height: 361px;
   display: flex;
   flex-direction: column;

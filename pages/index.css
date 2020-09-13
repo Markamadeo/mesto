@@ -18,6 +18,7 @@
 @import url("../blocks/gallery-item/__heart-button/_type/gallery-item__heart-button_type_active.css");
 @import url("../blocks/gallery-item/__content/gallery-item__content.css");
 @import url("../blocks/gallery-item/__image/gallery-item__image.css");
+@import url("../blocks/gallery-item/__trash-button/gallery-item__trash-button.css");
 @import url("../blocks/gallery-item/__title/gallery-item__title.css");
 @import url("../blocks/gallery-item/gallery-item.css");
 @import url("../blocks/footer/footer.css");
