@@ -8,38 +8,9 @@
   </head>
   <body>
     <main class="page">
-      <section class="edit-form">
-        <form class="edit-form__container" name="editForm">
-          <button type="button" class="edit-form__close-button"></button>
-          <h2 class="edit-form__title">Редактировать профиль</h2>
-          <input name="fullName" type="text" class="edit-form__textinput_type_full-name edit-form__textinput">
-          <input name="description" type="text" class="edit-form__textinput_type_description edit-form__textinput">
-          <button type="submit" class="edit-form__save-button">Сохранить</button>
-        </form>
-      </section>
-
-      <section class="adding-form">
-        <form class="adding-form__container" name="addingForm">
-          <button type="button" class="adding-form__close-button"></button>
-          <h2 class="adding-form__title">Новое место</h2>
-          <input name="name" type="text" class="adding-form__textinput adding-form__textinput_type_name">
-          <input name="link-adress" type="text" class="adding-form__textinput adding-form__textinput_type_link-adress">
-          <button type="submit" class="adding-form__add-button">Добавить</button>
-        </form>
-      </section>
-
-      <section class="foto-viewer">
-        <figure class="foto-viewer__container">
-          <button type="button" class="foto-viewer__close-button"></button>
-          <img class="foto-viewer__img" src="./images/gallery__mount-Elbrus.jpg" alt="">
-          <figcaption class="foto-viewer__description">Карачаево-Черкессия</figcaption>
-        </figure>
-      </section>
-
       <section class="header header_shift_down header_shift_up">
         <img src="./images/header__logo.svg" alt="Логотип" class="header__logo">
       </section>
-
       <div class="page__container">
         <section class="profile profile_shift_down">
           <img src="./images/profile_avatar.png" alt="Аватар" class="profile__image">
@@ -54,25 +25,49 @@
           </div>
           <button type="button" class="profile__add-botton"></button>
         </section>
-
-        <section class="gallery gallery_shift_down">
-        </section>
-
+        <ul class="gallery gallery_shift_down"></ul>
         <footer class="footer">
           <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>
       </div>
     </main>
-    <script type="module" src="./scripts/script.js"></script>
+    <section class="form form_type_edit">
+      <form class="form__container form__container_type_submit-form form__container_type_edit" name="editForm">
+        <button type="button" class="form__close-button form__close-button_type_edit"></button>
+        <h2 class="form__title form__title_type_edit">Редактировать профиль</h2>
+        <input name="fullName" type="text" class="form__textinput form__textinput_type_edit-full-name">
+        <input name="description" type="text" class="form__textinput form__textinput_type_edit-description">
+        <button type="submit" class="form__submit-button form__submit-button_type_edit-save-button">Сохранить</button>
+      </form>
+    </section>
+
+    <section class="form form_type_adding">
+      <form class="form__container form__container_type_submit-form form__container_type_adding" name="addingForm">
+        <button type="button" class="form__close-button form__close-button_type_adding"></button>
+        <h2 class="form__title form__title_type_adding">Новое место</h2>
+        <input name="name" type="text" class="form__textinput form__textinput_type_adding-name" placeholder="Название">
+        <input name="link-adress" type="text" class="form__textinput form__textinput_type_adiing-link-adress" placeholder="Ссылка на картинку">
+        <button type="submit" class="form__submit-button form__submit-button_type_adding-add-button">Добавить</button>
+      </form>
+    </section>
+
+    <section class="form form_type_foto-viewer">
+      <figure class="form__container form__container_type_foto-viewer">
+        <button type="button" class="form__close-button form__close-button_type_foto-viewer-close-button"></button>
+        <img class="form__foto-viewer-img" src="./images/gallery__mount-Elbrus.jpg" alt="">
+        <figcaption class="form__foto-viewer-description">Карачаево-Черкессия</figcaption>
+      </figure>
+    </section>
     <template id="gallery-item">
-      <article class="gallery-item" data-index="">
+      <li class="gallery-item">
         <button type="button" class="gallery-item__trash-button"></button>
         <img class="gallery-item__image" src="" alt="">
         <div class="gallery-item__content">
           <h2 class="gallery-item__title"></h2>
           <button type="button" class="gallery-item__heart-button"></button>
         </div>
-      </article>
+      </li>
     </template>
+    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>
