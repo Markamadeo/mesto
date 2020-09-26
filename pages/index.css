@@ -27,6 +27,9 @@
 @import url("../blocks/form/_type/form_type_adding.css");
 @import url("../blocks/form/_type/form_type_edit.css");
 @import url("../blocks/form/_type/form_type_foto-viewer.css");
+@import url("../blocks/form/__input-container/form__input-container.css");
+@import url("../blocks/form/__error/form__error.css");
+@import url("../blocks/form/__error/_visible/form__error_visible.css");
 @import url("../blocks/form/_status/form_status_active.css");
 @import url("../blocks/form/__title/form__title.css");
 @import url("../blocks/form/__title/_type/form__title_type_adding.css");
@@ -36,7 +39,9 @@
 @import url("../blocks/form/__textinput/_type/form__textinput_type_adiing-link-adress.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-description.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-full-name.css");
+@import url("../blocks/form/__textinput/_type/form__textinput_type_error.css");
 @import url("../blocks/form/__submit-button/form__submit-button.css");
+@import url("../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css");
 @import url("../blocks/form/__submit-button/_type/form__submit-button_type_adding-add-button.css");
 @import url("../blocks/form/__submit-button/_type/form__submit-button_type_edit-save-button.css");
 @import url("../blocks/form/__foto-viewer-img/form__foto-viewer-img.css");

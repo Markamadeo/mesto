@@ -35,8 +35,14 @@
       <form class="form__container form__container_type_submit-form form__container_type_edit" name="editForm">
         <button type="button" class="form__close-button form__close-button_type_edit"></button>
         <h2 class="form__title form__title_type_edit">Редактировать профиль</h2>
-        <input name="fullName" type="text" class="form__textinput form__textinput_type_edit-full-name">
-        <input name="description" type="text" class="form__textinput form__textinput_type_edit-description">
+        <div class="form__input-container">
+          <input name="fullName" type="text" class="form__textinput form__textinput_type_edit-full-name">
+          <span class="form__error" id="fullName-error">!!!!</span>
+        </div>
+        <div class="form__input-container">
+          <input name="description" type="text" class="form__textinput form__textinput_type_edit-description">
+          <span class="form__error" id="description-error">!!!!</span>
+        </div>
         <button type="submit" class="form__submit-button form__submit-button_type_edit-save-button">Сохранить</button>
       </form>
     </section>
@@ -45,8 +51,15 @@
       <form class="form__container form__container_type_submit-form form__container_type_adding" name="addingForm">
         <button type="button" class="form__close-button form__close-button_type_adding"></button>
         <h2 class="form__title form__title_type_adding">Новое место</h2>
-        <input name="name" type="text" class="form__textinput form__textinput_type_adding-name" placeholder="Название">
-        <input name="link-adress" type="text" class="form__textinput form__textinput_type_adiing-link-adress" placeholder="Ссылка на картинку">
+        <div class="form__input-container">
+          <input name="name" type="text" class="form__textinput form__textinput_type_adding-name" placeholder="Название">
+          <span class="form__error" id="name-error">!!!!</span>
+        </div>
+        <div class="form__input-container">
+          <input name="link-adress" type="text" class="form__textinput form__textinput_type_adiing-link-adress" placeholder="Ссылка на картинку">
+          <span class="form__error" id="link-adress-error">!!!!</span>
+
+        </div>
         <button type="submit" class="form__submit-button form__submit-button_type_adding-add-button">Добавить</button>
       </form>
     </section>
@@ -69,5 +82,6 @@
       </li>
     </template>
     <script type="module" src="./scripts/script.js"></script>
+    <script type="module" src="./scripts/validate.js"></script>
   </body>
 </html>
