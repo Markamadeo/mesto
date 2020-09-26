@@ -32,15 +32,15 @@
       </div>
     </main>
     <section class="form form_type_edit">
-      <form class="form__container form__container_type_submit-form form__container_type_edit" name="editForm">
+      <form class="form__container form__container_type_submit-form form__container_type_edit" name="editForm" novalidate>
         <button type="button" class="form__close-button form__close-button_type_edit"></button>
         <h2 class="form__title form__title_type_edit">Редактировать профиль</h2>
         <div class="form__input-container">
-          <input name="fullName" type="text" class="form__textinput form__textinput_type_edit-full-name">
+          <input name="fullName" type="text" class="form__textinput form__textinput_type_edit-full-name" required minlength="2" maxlength="40">
           <span class="form__error" id="fullName-error"></span>
         </div>
         <div class="form__input-container">
-          <input name="description" type="text" class="form__textinput form__textinput_type_edit-description">
+          <input name="description" type="text" class="form__textinput form__textinput_type_edit-description" required minlength="2" maxlength="200">
           <span class="form__error" id="description-error"></span>
         </div>
         <button type="submit" class="form__submit-button form__submit-button_type_edit-save-button">Сохранить</button>
@@ -48,19 +48,19 @@
     </section>
 
     <section class="form form_type_adding">
-      <form class="form__container form__container_type_submit-form form__container_type_adding" name="addingForm">
+      <form class="form__container form__container_type_submit-form form__container_type_adding" name="addingForm" novalidate>
         <button type="button" class="form__close-button form__close-button_type_adding"></button>
         <h2 class="form__title form__title_type_adding">Новое место</h2>
         <div class="form__input-container">
-          <input name="name" type="text" class="form__textinput form__textinput_type_adding-name" placeholder="Название">
+          <input name="name" type="text" class="form__textinput form__textinput_type_adding-name" placeholder="Название" required minlength="2" maxlength="30">
           <span class="form__error" id="name-error"></span>
         </div>
         <div class="form__input-container">
-          <input name="link-adress" type="text" class="form__textinput form__textinput_type_adiing-link-adress" placeholder="Ссылка на картинку">
+          <input name="link-adress" type="url" class="form__textinput form__textinput_type_adiing-link-adress" placeholder="Ссылка на картинку" required>
           <span class="form__error" id="link-adress-error"></span>
 
         </div>
-        <button type="submit" class="form__submit-button form__submit-button_type_adding-add-button">Добавить</button>
+        <button type="submit" class="form__submit-button form__submit-button_type_adding-add-button form__submit-button_disabled" disabled>Добавить</button>
       </form>
     </section>
 
@@ -81,7 +81,7 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./scripts/script.js"></script>
     <script type="module" src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>

@@ -59,14 +59,12 @@ const createNewCard = (name, link) => {
 };
 
 const submitEditForm = (event) => {
-  event.preventDefault();
   fullNameOnPage.textContent = editFormFullName.value;
   descriptionOnPage.textContent = editFormDescription.value;
   togglePopupStatus(findParentForm(event.target));
 };
 
 const submitAddingForm = (event) => {
-  event.preventDefault();
   gallery.prepend(createNewCard(addingFormName.value, addingFormLinkAdress.value));
   event.target.closest('.form__container').reset();
   togglePopupStatus(findParentForm(event.target));
