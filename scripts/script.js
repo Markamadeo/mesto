@@ -23,6 +23,24 @@ const togglePopupStatus = (elem) => {
 
 const findParentForm = elem => elem.closest('.form');
 
+const openEditForm = () => {
+  addEscapeEventForForm();
+  togglePopupStatus(editForm);
+  editFormFullName.value = fullNameOnPage.textContent;
+  editFormDescription.value = descriptionOnPage.textContent;
+  editFormFullName.focus();
+};
+
+const openAddingForm = () => {
+  addEscapeEventForForm();
+  togglePopupStatus(addingForm);
+};
+
+const openViewerForm = () => {
+  addEscapeEventForForm();
+  togglePopupStatus(fotoViewer);
+};
+
 const closeForm = (event) => {
   if (event.target === event.currentTarget || event.target.classList.contains('form__close-button')) {
     togglePopupStatus(event.target.closest('.form'));
@@ -52,7 +70,7 @@ const createNewCard = (name, link) => {
     fotoViewerImg.setAttribute('src', linkAdress);
     fotoViewerImg.setAttribute('alt', imgName);
     fotoCaption.textContent = imgName;
-    togglePopupStatus(fotoViewer);
+    openViewerForm();
   });
 
   return card;
@@ -76,16 +94,26 @@ const renderGalleryItems = () => {
   });
 };
 
+const handlerEsc = (event) => {
+  if (event.key === 'Escape') {
+    Array.from(form).forEach(formElement => {
+      if (formElement.classList.contains('form_status_active')) {
+        togglePopupStatus(formElement);
+      }
+    });
+    document.removeEventListener('keydown', handlerEsc);
+  }
+};
+
+const addEscapeEventForForm = () => {
+  document.addEventListener('keydown', handlerEsc);
+};
+
 form.forEach((form) => {
   form.addEventListener('click', closeForm);
 });
-profileEditButton.addEventListener('click', () => {
-    togglePopupStatus(editForm);
-    editFormFullName.value = fullNameOnPage.textContent;
-    editFormDescription.value = descriptionOnPage.textContent;
-    editFormFullName.focus();
-});
-profileAddingButton.addEventListener('click', () => togglePopupStatus(addingForm));
+profileEditButton.addEventListener('click', openEditForm);
+profileAddingButton.addEventListener('click', openAddingForm);
 editForm.addEventListener('submit', submitEditForm);
 addingForm.addEventListener('submit', submitAddingForm);
 
