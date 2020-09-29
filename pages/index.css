@@ -36,7 +36,7 @@
 @import url("../blocks/form/__title/_type/form__title_type_edit.css");
 @import url("../blocks/form/__textinput/form__textinput.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_adding-name.css");
-@import url("../blocks/form/__textinput/_type/form__textinput_type_adiing-link-adress.css");
+@import url("../blocks/form/__textinput/_type/form__textinput_type_adding-link-address.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-description.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-full-name.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_error.css");

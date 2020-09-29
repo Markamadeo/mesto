@@ -15,7 +15,9 @@ const editFormDescription = document.querySelector('.form__textinput_type_edit-d
 const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const addingFormName = document.querySelector('.form__textinput_type_adding-name');
-const addingFormLinkAdress = document.querySelector('.form__textinput_type_adiing-link-adress');
+const addingFormLinkAddress = document.querySelector('.form__textinput_type_adding-link-address');
+editFormFullName.value = fullNameOnPage.textContent;
+editFormDescription.value = descriptionOnPage.textContent;
 
 const togglePopupStatus = (elem) => {
   elem.classList.toggle('form_status_active');
@@ -26,8 +28,6 @@ const findParentForm = elem => elem.closest('.form');
 const openEditForm = () => {
   addEscapeEventForForm();
   togglePopupStatus(editForm);
-  editFormFullName.value = fullNameOnPage.textContent;
-  editFormDescription.value = descriptionOnPage.textContent;
   editFormFullName.focus();
 };
 
@@ -65,9 +65,9 @@ const createNewCard = (name, link) => {
     listItem.remove();
   });
   cardImg.addEventListener('click', (event) => {
-    const linkAdress = event.target.getAttribute('src');
+    const linkAddress = event.target.getAttribute('src');
     const imgName = event.target.getAttribute('alt');
-    fotoViewerImg.setAttribute('src', linkAdress);
+    fotoViewerImg.setAttribute('src', linkAddress);
     fotoViewerImg.setAttribute('alt', imgName);
     fotoCaption.textContent = imgName;
     openViewerForm();
@@ -83,8 +83,13 @@ const submitEditForm = (event) => {
 };
 
 const submitAddingForm = (event) => {
-  gallery.prepend(createNewCard(addingFormName.value, addingFormLinkAdress.value));
+  gallery.prepend(createNewCard(addingFormName.value, addingFormLinkAddress.value));
+  const formSubmitButton = event.target.querySelector('.form__submit-button');
+
   event.target.closest('.form__container').reset();
+  // console.log();
+  formSubmitButton.setAttribute('disabled', true);
+  formSubmitButton.classList.add('form__submit-button_disabled');
   togglePopupStatus(findParentForm(event.target));
 };
 
