@@ -87,7 +87,6 @@ const submitAddingForm = (event) => {
   const formSubmitButton = event.target.querySelector('.form__submit-button');
 
   event.target.closest('.form__container').reset();
-  // console.log();
   formSubmitButton.setAttribute('disabled', true);
   formSubmitButton.classList.add('form__submit-button_disabled');
   togglePopupStatus(findParentForm(event.target));
