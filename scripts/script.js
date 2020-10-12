@@ -17,8 +17,6 @@ const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const addingFormName = document.querySelector('.form__textinput_type_adding-name');
 const addingFormLinkAdress = document.querySelector('.form__textinput_type_adiing-link-adress');
-editFormFullName.value = fullNameOnPage.textContent;
-editFormDescription.value = descriptionOnPage.textContent;
 const formsValidator = new FormValidator (paramsForValidationOfForm);
 
 const togglePopupStatus = (elem) => {
@@ -29,6 +27,8 @@ const findParentForm = elem => elem.closest('.form');
 
 const openEditForm = () => {
   addEscapeEventForForm();
+  editFormFullName.value = fullNameOnPage.textContent;
+  editFormDescription.value = descriptionOnPage.textContent;
   togglePopupStatus(editForm);
   editFormFullName.focus();
 };
