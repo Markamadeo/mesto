@@ -1,5 +1,6 @@
-import { initialCards } from './data.js';
+import { initialCards, paramsForValidationOfForm } from './data.js';
 import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelectorAll('.form');
@@ -16,6 +17,9 @@ const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const addingFormName = document.querySelector('.form__textinput_type_adding-name');
 const addingFormLinkAdress = document.querySelector('.form__textinput_type_adiing-link-adress');
+editFormFullName.value = fullNameOnPage.textContent;
+editFormDescription.value = descriptionOnPage.textContent;
+const formsValidator = new FormValidator (paramsForValidationOfForm);
 
 const togglePopupStatus = (elem) => {
   elem.classList.toggle('form_status_active');
@@ -26,8 +30,6 @@ const findParentForm = elem => elem.closest('.form');
 const openEditForm = () => {
   addEscapeEventForForm();
   togglePopupStatus(editForm);
-  editFormFullName.value = fullNameOnPage.textContent;
-  editFormDescription.value = descriptionOnPage.textContent;
   editFormFullName.focus();
 };
 
@@ -95,6 +97,8 @@ const addEscapeEventForForm = () => {
 form.forEach((form) => {
   form.addEventListener('click', closeForm);
 });
+
+formsValidator.enableValidation();
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);
 editForm.addEventListener('submit', submitEditForm);
