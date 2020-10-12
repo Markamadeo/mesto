@@ -1,14 +1,13 @@
-import {openViewerForm} from './script.js';
-
 export class Card {
-  constructor (data, selector) {
+  constructor (data, selector, openViewerForm) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
+    this._openViewerForm = openViewerForm;
   }
 
   _getTamplate() {
-    const card = document.querySelector(this._selector).content.cloneNode(true);
+    const card = document.querySelector(this._selector).content.cloneNode(true).children[0];
     return card;
   }
 
@@ -20,19 +19,13 @@ export class Card {
 
   _deleteHandler() {
     this._cardProperties.trash.addEventListener('click', (event) => {
-      const listItem = event.target.closest('.gallery-item');
-      listItem.remove();
+      this._card.remove();
     });
   }
 
   _imgHandler() {
     this._cardProperties.img.addEventListener('click', () => {
-      const fotoViewerImg = document.querySelector('.form__foto-viewer-img');
-      const fotoCaption = document.querySelector('.form__foto-viewer-description');
-      fotoViewerImg.setAttribute('src', this._link);
-      fotoViewerImg.setAttribute('alt', this._name);
-      fotoCaption.textContent = this._name;
-      openViewerForm();
+      this._openViewerForm(this._name, this._link);
     });
   }
 

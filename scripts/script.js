@@ -8,6 +8,8 @@ const profileAddingButton = document.querySelector('.profile__add-botton');
 const editForm = document.querySelector('.form_type_edit');
 const addingForm = document.querySelector('.form_type_adding');
 const fotoViewer = document.querySelector('.form_type_foto-viewer');
+const fotoViewerImg = document.querySelector('.form__foto-viewer-img');
+const fotoCaption = document.querySelector('.form__foto-viewer-description');
 const editFormFullName = document.querySelector('.form__textinput_type_edit-full-name');
 const editFormDescription = document.querySelector('.form__textinput_type_edit-description');
 const fullNameOnPage = document.querySelector('.profile__full-name');
@@ -34,8 +36,11 @@ const openAddingForm = () => {
   togglePopupStatus(addingForm);
 };
 
-export const openViewerForm = () => {
+const openViewerForm = (name, link) => {
   addEscapeEventForForm();
+  fotoViewerImg.setAttribute('src', link);
+  fotoViewerImg.setAttribute('alt', name);
+  fotoCaption.textContent = name;
   togglePopupStatus(fotoViewer);
 };
 
@@ -57,7 +62,7 @@ const submitAddingForm = (event) => {
     link: addingFormLinkAdress.value
   };
 
-  const card = new Card(dataInput, '#gallery-item');
+  const card = new Card(dataInput, '#gallery-item', openViewerForm);
   const cardElement = card.generateCard();
   gallery.prepend(cardElement);
   event.target.closest('.form__container').reset();
@@ -66,7 +71,7 @@ const submitAddingForm = (event) => {
 
 const renderGalleryItems = () => {
   initialCards.forEach((item) => {
-    const card = new Card(item, '#gallery-item');
+    const card = new Card(item, '#gallery-item', openViewerForm);
     const cardElement = card.generateCard();
     gallery.append(cardElement);
   });
