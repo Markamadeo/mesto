@@ -7,7 +7,8 @@ export class Card {
   }
 
   _getTamplate() {
-    const card = document.querySelector(this._selector).content.cloneNode(true).children[0];
+    const template = document.querySelector(this._selector).content.cloneNode(true);
+    const card = template.querySelector('.gallery-item');
     return card;
   }
 
@@ -20,6 +21,7 @@ export class Card {
   _deleteHandler() {
     this._cardProperties.trash.addEventListener('click', (event) => {
       this._card.remove();
+      this._card = null;
     });
   }
 
@@ -34,7 +36,6 @@ export class Card {
     this._deleteHandler();
     this._imgHandler();
   }
-
 
   generateCard() {
     this._card = this._getTamplate();

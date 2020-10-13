@@ -1,6 +1,8 @@
 .page {
   max-width: 100%;
   min-width: 320px;
+  min-height: 100vh;
+  align-content: flex-start;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
