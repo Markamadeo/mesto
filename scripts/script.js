@@ -17,7 +17,7 @@ const editFormDescription = document.querySelector('.form__textinput_type_edit-d
 const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const addingFormName = document.querySelector('.form__textinput_type_adding-name');
-const addingFormLinkAdress = document.querySelector('.form__textinput_type_adiing-link-adress');
+const addingFormLinkAdress = document.querySelector('.form__textinput_type_adding-link-address');
 const submitButton = addingForm.querySelector('.form__submit-button_type_adding-add-button');
 
 const togglePopupStatus = (elem) => {
@@ -73,7 +73,6 @@ const submitEditForm = (event) => {
 };
 
 const submitAddingForm = (event) => {
-  const formSubmitButton = event.target.querySelector('.form__submit-button');
   const dataInput = {
     name: addingFormName.value,
     link: addingFormLinkAdress.value
