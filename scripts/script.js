@@ -7,7 +7,8 @@ const form = document.querySelectorAll('.form');
 const profileEditButton = document.querySelector('.profile__edit-botton');
 const profileAddingButton = document.querySelector('.profile__add-botton');
 const editForm = document.querySelector('.form_type_edit');
-const addingForm = document.querySelector('.form_type_adding');
+const popupAddingForm = document.querySelector('.form_type_adding');
+const addingForm = document.querySelector('.form__container_type_adding');
 const fotoViewer = document.querySelector('.form_type_foto-viewer');
 const fotoViewerImg = document.querySelector('.form__foto-viewer-img');
 const fotoCaption = document.querySelector('.form__foto-viewer-description');
@@ -16,8 +17,8 @@ const editFormDescription = document.querySelector('.form__textinput_type_edit-d
 const fullNameOnPage = document.querySelector('.profile__full-name');
 const descriptionOnPage = document.querySelector('.profile__description');
 const addingFormName = document.querySelector('.form__textinput_type_adding-name');
-const addingFormLinkAdress = document.querySelector('.form__textinput_type_adding-link-address');
-const formsValidator = new FormValidator (paramsForValidationOfForm);
+const addingFormLinkAdress = document.querySelector('.form__textinput_type_adiing-link-adress');
+const submitButton = addingForm.querySelector('.form__submit-button_type_adding-add-button');
 
 const togglePopupStatus = (elem) => {
   elem.classList.toggle('form_status_active');
@@ -34,8 +35,11 @@ const openEditForm = () => {
 };
 
 const openAddingForm = () => {
+  addingForm.reset();
+  submitButton.setAttribute('disabled', true);
+  submitButton.classList.add('form__submit-button_disabled');
   addEscapeEventForForm();
-  togglePopupStatus(addingForm);
+  togglePopupStatus(popupAddingForm);
 };
 
 const openViewerForm = (name, link) => {
@@ -52,6 +56,16 @@ const closeForm = (event) => {
   };
 };
 
+const createNewCard = (data, template, func) => {
+  const card = new Card(data, template, func);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+const addCardToGallery = (cardElement) => {
+  gallery.prepend(cardElement);
+}
+
 const submitEditForm = (event) => {
   fullNameOnPage.textContent = editFormFullName.value;
   descriptionOnPage.textContent = editFormDescription.value;
@@ -65,20 +79,15 @@ const submitAddingForm = (event) => {
     link: addingFormLinkAdress.value
   };
 
-  const card = new Card(dataInput, '#gallery-item', openViewerForm);
-  const cardElement = card.generateCard();
-  gallery.prepend(cardElement);
-  event.target.closest('.form__container').reset();
-  formSubmitButton.setAttribute('disabled', true);
-  formSubmitButton.classList.add('form__submit-button_disabled');
+  const card = createNewCard(dataInput, '#gallery-item', openViewerForm);
+  addCardToGallery(card);
   togglePopupStatus(findParentForm(event.target));
 };
 
 const renderGalleryItems = () => {
   initialCards.forEach((item) => {
-    const card = new Card(item, '#gallery-item', openViewerForm);
-    const cardElement = card.generateCard();
-    gallery.append(cardElement);
+    const card = createNewCard(item, '#gallery-item', openViewerForm);
+    addCardToGallery(card);
   });
 };
 
@@ -101,10 +110,14 @@ form.forEach((form) => {
   form.addEventListener('click', closeForm);
 });
 
-formsValidator.enableValidation();
+const formEditValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_edit');
+formEditValidator.enableValidation();
+const formAddingValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_adding');
+formAddingValidator.enableValidation();
+
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);
 editForm.addEventListener('submit', submitEditForm);
-addingForm.addEventListener('submit', submitAddingForm);
+popupAddingForm.addEventListener('submit', submitAddingForm);
 
 renderGalleryItems();
