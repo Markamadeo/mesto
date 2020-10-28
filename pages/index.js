@@ -1,103 +1,55 @@
-import { initialCards, paramsForValidationOfForm, form, profileEditButton, profileAddingButton, editForm, popupAddingForm, addingForm, fotoViewer, fotoViewerImg, fotoCaption, editFormFullName, editFormDescription, fullNameOnPage, descriptionOnPage, addingFormName, addingFormLinkAdress, submitButton } from '../utils/constants.js';
+import { initialCards, paramsForValidationOfForm, profileEditButton, profileAddingButton, editFormFullName, editFormDescription, submitButton } from '../utils/constants.js';
 
-import { createNewCard } from '../utils/utils.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import UserInfo from '../components/UserInfo.js';
+import { createNewCard } from '../utils/utils.js';
 import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 
-const togglePopupStatus = (elem) => {
-  elem.classList.toggle('form_status_active');
+function submitEditForm () {
+  userInfo.setUserInfo(this._getInputsValues());
+  this.close();
 };
 
-const findParentForm = elem => elem.closest('.form');
+function submitAddingForm () {
+  const dataUser = this._getInputsValues();
+  const dataInput = {
+    name: dataUser.value0,
+    link: dataUser.value1
+  };
+  const card = createNewCard(dataInput, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
+  galleryItems.addItem(card);
+  this.close();
+};
 
 const openEditForm = () => {
-  addEscapeEventForForm();
-  editFormFullName.value = fullNameOnPage.textContent;
-  editFormDescription.value = descriptionOnPage.textContent;
-  togglePopupStatus(editForm);
-  editFormFullName.focus();
+  const userData = userInfo.getUserinfo();
+  editFormFullName.value = userData.fullName;
+  editFormDescription.value = userData.userDescription;
+  popupEditForm.open();
 };
 
 const openAddingForm = () => {
-  addingForm.reset();
   submitButton.setAttribute('disabled', true);
   submitButton.classList.add('form__submit-button_disabled');
-  addEscapeEventForForm();
-  togglePopupStatus(popupAddingForm);
+  popupAddingForm.open();
 };
-
-const openViewerForm = (name, link) => {
-  addEscapeEventForForm();
-  fotoViewerImg.setAttribute('src', link);
-  fotoViewerImg.setAttribute('alt', name);
-  fotoCaption.textContent = name;
-  togglePopupStatus(fotoViewer);
-};
-
-const closeForm = (event) => {
-  if (event.target === event.currentTarget || event.target.classList.contains('form__close-button')) {
-    togglePopupStatus(event.target.closest('.form'));
-  };
-};
-
-// const addCardToGallery = (cardElement) => {
-//   gallery.prepend(cardElement);
-// }
-
-const submitEditForm = (event) => {
-  fullNameOnPage.textContent = editFormFullName.value;
-  descriptionOnPage.textContent = editFormDescription.value;
-  togglePopupStatus(findParentForm(event.target));
-};
-
-const submitAddingForm = (event) => {
-  const dataInput = {
-    name: addingFormName.value,
-    link: addingFormLinkAdress.value
-  };
-
-  const card = createNewCard(dataInput, '#gallery-item', openViewerForm);
-  galleryItems.addItem(card);
-  togglePopupStatus(findParentForm(event.target));
-};
-
-// const renderGalleryItems = () => {
-//   initialCards.forEach((item) => {
-//     const card = createNewCard(item, '#gallery-item', openViewerForm);
-//     addCardToGallery(card);
-//   });
-// };
 
 const galleryItems = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      return createNewCard(item, '#gallery-item', openViewerForm);
+      return createNewCard(item, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
     }
   },
-
   '.gallery'
 );
 
-
-const handlerEsc = (event) => {
-  if (event.key === 'Escape') {
-    Array.from(form).forEach(formElement => {
-      if (formElement.classList.contains('form_status_active')) {
-        togglePopupStatus(formElement);
-      }
-    });
-    document.removeEventListener('keydown', handlerEsc);
-  }
-};
-
-const addEscapeEventForForm = () => {
-  document.addEventListener('keydown', handlerEsc);
-};
-
-form.forEach((form) => {
-  form.addEventListener('click', closeForm);
-});
+const userInfo = new UserInfo({nameSelector: '.profile__full-name', userInfoSelector: '.profile__description'});
+const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
+const popupEditForm = new PopupWithForm('.form_type_edit', submitEditForm);
+const popupAddingForm = new PopupWithForm('.form_type_adding', submitAddingForm);
 
 const formEditValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_edit');
 formEditValidator.enableValidation();
@@ -106,8 +58,5 @@ formAddingValidator.enableValidation();
 
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);
-editForm.addEventListener('submit', submitEditForm);
-popupAddingForm.addEventListener('submit', submitAddingForm);
 
 galleryItems.renderItems();
-// renderGalleryItems();
