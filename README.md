@@ -33,7 +33,7 @@ BEM - БЭМ (Блок Элемент Модификатор)
 * Семантическая вёрстка
 * Анимация и многое другое.
 
-![](./images/photo_readme.png)
+![](./src/images/photo_readme.png)
 
 **META**
 
