@@ -1,3 +1,4 @@
+import './index.css';
 import { initialCards, paramsForValidationOfForm, profileEditButton, profileAddingButton, editFormFullName, editFormDescription, submitButton } from '../utils/constants.js';
 
 import PopupWithImage from '../components/PopupWithImage.js'

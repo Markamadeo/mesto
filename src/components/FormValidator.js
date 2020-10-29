@@ -17,7 +17,7 @@ export class FormValidator {
 
   _hideErrorMessage = (errorElement) => {
     errorElement.classList.remove(this._errorClass);
-  }
+  };
 
   _checkInputValidity = (form, inputElement) => {
     const inputElementState = inputElement.validity.valid;
