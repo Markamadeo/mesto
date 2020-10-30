@@ -4,8 +4,8 @@
   "description": "Проект Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --mode production",
-    "dev": "webpack-dev-server",
+    "build": "rimraf dist && webpack --mode production",
+    "dev": "webpack-dev-server --open --watch",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "mini-css-extract-plugin": "^1.2.1",
     "postcss": "^8.1.4",
     "postcss-loader": "^4.0.4",
+    "rimraf": "^3.0.2",
     "webpack": "^5.3.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

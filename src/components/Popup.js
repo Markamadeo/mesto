@@ -8,7 +8,6 @@ export default class Popup {
 
   open () {
     this._togglePopupStatus(this._form);
-    this.setEventListeners();
   };
 
   close = () => {
@@ -18,13 +17,13 @@ export default class Popup {
     this._form.removeEventListener('click', this._handleClickClose);
   };
 
-  setEventListeners = () => {
-    document.addEventListener('keydown', this._handleEscClose);
+  setEventListeners () {
     this._closeButton.addEventListener('click', this.close);
+    document.addEventListener('keydown', this._handleEscClose);
     this._form.addEventListener('click', this._handleClickClose);
   };
 
-  _togglePopupStatus = (elem) => {
+  _togglePopupStatus (elem) {
     elem.classList.toggle('form_status_active');
   };
 
