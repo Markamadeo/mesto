@@ -1,24 +1,23 @@
 export default class Popup {
   constructor(selector) {
     this._form = document.querySelector(selector);
-    this._formContainer = this._form.querySelector('.form__container');
     this._closeButton = this._form.querySelector('.form__close-button');
-    this._submitButtom = this._form.querySelector('.form__submit-button');
+    this._close = this.close.bind(this);
   }
 
   open () {
     this._togglePopupStatus(this._form);
   };
 
-  close = () => {
+  close () {
     this._togglePopupStatus(this._form);
-    this._closeButton.removeEventListener('keydown', this.close);
+    this._closeButton.removeEventListener('click', this._close);
     document.removeEventListener('keydown', this._handleEscClose);
     this._form.removeEventListener('click', this._handleClickClose);
   };
 
   setEventListeners () {
-    this._closeButton.addEventListener('click', this.close);
+    this._closeButton.addEventListener('click', this._close);
     document.addEventListener('keydown', this._handleEscClose);
     this._form.addEventListener('click', this._handleClickClose);
   };
