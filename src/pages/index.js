@@ -17,11 +17,10 @@ function submitEditForm (evt) {
   evt.target.elements.editSubmit.textContent = 'Сохранить...';
   api.sendProfileInfo(this._getInputsValues())
     .then(data => {
-      loadUserInfo(data);
+      userInfo.loadUserInfo(data);
       evt.target.elements.editSubmit.textContent = 'Сохранить';
       this.close();
     })
-  // userInfo.setUserInfo(this._getInputsValues());
 };
 
 function submitAddingForm () {
@@ -64,15 +63,9 @@ api.initialCards()
     galleryItems.renderItems();
   })
 
-const loadUserInfo = (data) => {
-  nameUserOnPage.textContent = data.name;
-  aboutUserOnPage.textContent = data.about;
-  avatarUserOnPage.setAttribute('src', data.avatar);
-}
+api.getUserInfo().then(data => userInfo.loadUserInfo(data));
 
-api.getUserInfo().then(data => loadUserInfo(data));
-
-const userInfo = new UserInfo({nameSelector: '.profile__full-name', userInfoSelector: '.profile__description'});
+const userInfo = new UserInfo({nameOnPage: nameUserOnPage, userDescription: aboutUserOnPage, userAvatar: avatarUserOnPage}, api);
 const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
 const popupEditForm = new PopupWithForm('.form_type_edit', submitEditForm);
 const popupAddingForm = new PopupWithForm('.form_type_adding', submitAddingForm);

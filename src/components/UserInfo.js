@@ -1,18 +1,25 @@
 export default class UserInfo {
-  constructor( {nameSelector, userInfoSelector} ) {
-    this._nameSelector = document.querySelector(nameSelector);
-    this._userInfoSelector = document.querySelector(userInfoSelector);
+  constructor( {nameOnPage, userDescription, userAvatar}, api ) {
+    this._nameOnPage = nameOnPage;
+    this._userDescription = userDescription;
+    this._userAvatar = userAvatar;
+  }
+
+  loadUserInfo(data) {
+    this._nameOnPage.textContent = data.name;
+    this._userDescription.textContent = data.about;
+    this._userAvatar.setAttribute('src', data.avatar);
   }
 
   getUserinfo = () => {
     return {
-      fullName: this._nameSelector.textContent,
-      userDescription: this._userInfoSelector.textContent
+      fullName: this._nameOnPage.textContent,
+      userDescription: this._userDescription.textContent
     }
   };
 
   setUserInfo = ({value0: fullName, value1: userDescription}) => {
-    this._nameSelector.textContent = fullName;
-    this._userInfoSelector.textContent = userDescription;
+    this._nameOnPage.textContent = fullName;
+    this._userDescription.textContent = userDescription;
   };
 }
