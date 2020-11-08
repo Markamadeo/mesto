@@ -1,5 +1,5 @@
 import './index.css';
-import { initialCards, paramsForValidationOfForm, profileEditButton, profileAddingButton, editFormFullName, editFormDescription, submitButton, nameUserOnPage, aboutUserOnPage, avatarUserOnPage} from '../utils/constants.js';
+import { paramsForValidationOfForm, profileEditButton, profileAddingButton, editFormFullName, editFormDescription, submitButton, nameUserOnPage, aboutUserOnPage, avatarUserOnPage} from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js';
@@ -9,7 +9,7 @@ import Section from '../components/Section.js';
 import Api from '../components/Api.js';
 
 function submitEditForm () {
-  userInfo.setUserInfo(this._getInputsValues());
+  userInfo.loadUserInfo(this._getInputsValues());
   this.close();
 };
 
@@ -37,28 +37,32 @@ const openAddingForm = () => {
   popupAddingForm.open();
 };
 
-const galleryItems = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      return createNewCard(item, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
-    }
-  },
-  '.gallery'
-);
-
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
   headers: {'authorization': 'ce46bc36-f433-488f-bf62-df1955cfcd45', 'Content-Type': 'application/json'}
 });
 
-const setUserInfo = (data) => {
+api.initialCards()
+  .then(data => {
+    const galleryItems = new Section(
+      {
+        items: data,
+        renderer: (item) => {
+          return createNewCard(item, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
+        }
+      },
+      '.gallery'
+    );
+    galleryItems.renderItems();
+  })
+
+const loadUserInfo = (data) => {
   nameUserOnPage.textContent = data.name;
   aboutUserOnPage.textContent = data.about;
   avatarUserOnPage.setAttribute('src', data.avatar);
 }
 
-api.getUserInfo().then(data => setUserInfo(data));
+api.getUserInfo().then(data => loadUserInfo(data));
 
 const userInfo = new UserInfo({nameSelector: '.profile__full-name', userInfoSelector: '.profile__description'});
 const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
@@ -73,4 +77,3 @@ formAddingValidator.enableValidation();
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);
 
-galleryItems.renderItems();

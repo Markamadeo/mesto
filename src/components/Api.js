@@ -15,4 +15,16 @@ export default class Api {
       })
       .catch(err => alert(err));
   }
+
+  initialCards() {
+    return fetch(this.baseUrl + '/cards', {headers: this.headers})
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: не удалось загрузить данные галереи, статус ${res.status}`);
+      })
+      .catch(err => alert(err));
+  }
 }
