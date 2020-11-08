@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "@babel/env",
+      "@babel/preset-env",
       {
         "targets": {
           "edge": "17",
@@ -10,8 +10,11 @@
           "safari": "11.1"
         },
         "useBuiltIns": "usage",
-        "corejs": "3.6.5"
+        "corejs": "3.7.0"
       }
     ]
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
   ]
 }
