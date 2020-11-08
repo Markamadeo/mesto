@@ -8,9 +8,20 @@ import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Api from '../components/Api.js';
 
-function submitEditForm () {
-  userInfo.loadUserInfo(this._getInputsValues());
-  this.close();
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
+  headers: {'authorization': 'ce46bc36-f433-488f-bf62-df1955cfcd45', 'Content-Type': 'application/json'}
+});
+
+function submitEditForm (evt) {
+  evt.target.elements.editSubmit.textContent = 'Сохранить...';
+  api.sendProfileInfo(this._getInputsValues())
+    .then(data => {
+      loadUserInfo(data);
+      evt.target.elements.editSubmit.textContent = 'Сохранить';
+      this.close();
+    })
+  // userInfo.setUserInfo(this._getInputsValues());
 };
 
 function submitAddingForm () {
@@ -37,10 +48,7 @@ const openAddingForm = () => {
   popupAddingForm.open();
 };
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
-  headers: {'authorization': 'ce46bc36-f433-488f-bf62-df1955cfcd45', 'Content-Type': 'application/json'}
-});
+
 
 api.initialCards()
   .then(data => {
