@@ -37,7 +37,8 @@ function submitAddingForm () {
         '#gallery-item',
         popupPhotoViewer.open.bind(popupPhotoViewer),
         popupDeleteForm.open.bind(popupDeleteForm),
-        userInfo
+        userInfo,
+        api
       );
       galleryItems.addItemTheFirst(card);
       this.close();
@@ -75,7 +76,8 @@ api.initialCards()
           '#gallery-item',
           popupPhotoViewer.open.bind(popupPhotoViewer),
           popupDeleteForm.open.bind(popupDeleteForm),
-          userInfo
+          userInfo,
+          api
           );
         }
       },

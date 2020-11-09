@@ -1,5 +1,5 @@
 export class Card {
-  constructor (data, selector, openViewerForm, openDeleteForm, userInfo) {
+  constructor (data, selector, openViewerForm, openDeleteForm, userInfo, api) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
@@ -9,6 +9,8 @@ export class Card {
     this._likes = data.likes;
     this._owner = data.owner;
     this._userInfo = userInfo;
+    this._api = api;
+    this._like = false;
   }
 
   _getTamplate() {
@@ -19,7 +21,21 @@ export class Card {
 
   _likeHandler() {
     this._cardProperties.like.addEventListener('click', () => {
-      this._cardProperties.like.classList.toggle('gallery-item__heart-button_type_active');
+      if(this._like) {
+        this._api.removeLikePhoto(this._cardId)
+          .then(data => {
+            this._like = false;
+            this._cardProperties.counter.textContent = data.likes.length;
+            this._cardProperties.like.classList.toggle('gallery-item__heart-button_type_active');
+          })
+      } else {
+        this._api.addLikePhoto(this._cardId)
+        .then(data => {
+          this._like = true;
+          this._cardProperties.counter.textContent = data.likes.length;
+          this._cardProperties.like.classList.toggle('gallery-item__heart-button_type_active');
+        })
+      }
     });
   }
 
@@ -54,6 +70,14 @@ export class Card {
     if(this._userInfo._id !== this._owner._id) {
       this._cardProperties.trash.remove();
     }
+
+    this._likes.forEach(element => {
+      if(element._id === this._userInfo._id) {
+        this._cardProperties.like.classList.add('gallery-item__heart-button_type_active');
+        this._like = true;
+      }
+    });
+
     this._cardProperties.img.setAttribute('src', `${this._link}`);
     this._cardProperties.img.setAttribute('alt', `${this._name}`);
     this._cardProperties.title.textContent = this._name;
