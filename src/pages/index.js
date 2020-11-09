@@ -7,6 +7,7 @@ import { createNewCard } from '../utils/utils.js';
 import {FormValidator} from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Api from '../components/Api.js';
+import PopupWithSubmit from '../components/PopupWithSubmit';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-17',
@@ -31,11 +32,24 @@ function submitAddingForm () {
   };
   api.sendNewCard(dataInput)
     .then(data => {
-      const card = createNewCard(data, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
+      const card = createNewCard(
+        data,
+        '#gallery-item',
+        popupPhotoViewer.open.bind(popupPhotoViewer),
+        popupDeleteForm.open.bind(popupDeleteForm),
+        userInfo
+      );
       galleryItems.addItemTheFirst(card);
       this.close();
     })
 };
+
+
+function submitDeleteForm () {
+  debugger
+  this._data;
+}
+
 
 const openEditForm = () => {
   const userData = userInfo.getUserinfo();
@@ -55,7 +69,13 @@ api.initialCards()
       {
         items: data,
         renderer: (item) => {
-          return createNewCard(item, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
+        return createNewCard(
+          item,
+          '#gallery-item',
+          popupPhotoViewer.open.bind(popupPhotoViewer),
+          popupDeleteForm.open.bind(popupDeleteForm),
+          userInfo
+          );
         }
       },
       '.gallery'
@@ -69,6 +89,7 @@ const userInfo = new UserInfo({nameOnPage: nameUserOnPage, userDescription: abou
 const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
 const popupEditForm = new PopupWithForm('.form_type_edit', submitEditForm);
 const popupAddingForm = new PopupWithForm('.form_type_adding', submitAddingForm);
+const popupDeleteForm = new PopupWithSubmit('.form_type_delete-card', submitDeleteForm);
 
 const formEditValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_edit');
 formEditValidator.enableValidation();

@@ -9,6 +9,7 @@ export default class UserInfo {
     this._nameOnPage.textContent = data.name;
     this._userDescription.textContent = data.about;
     this._userAvatar.setAttribute('src', data.avatar);
+    this._id = data._id;
   }
 
   getUserinfo = () => {

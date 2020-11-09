@@ -1,11 +1,14 @@
 export class Card {
-  constructor (data, selector, openViewerForm) {
+  constructor (data, selector, openViewerForm, openDeleteForm, userInfo) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
     this._openViewerForm = openViewerForm;
+    this._openDeleteForm = openDeleteForm;
     this._cardId = data._id;
     this._likes = data.likes;
+    this._owner = data.owner;
+    this._userInfo = userInfo;
   }
 
   _getTamplate() {
@@ -21,9 +24,8 @@ export class Card {
   }
 
   _deleteHandler() {
-    this._cardProperties.trash.addEventListener('click', (event) => {
-      this._card.remove();
-      this._card = null;
+    this._cardProperties.trash.addEventListener('click', () => {
+      this._openDeleteForm(this._cardId);
     });
   }
 
@@ -49,7 +51,9 @@ export class Card {
       'title': this._card.querySelector('.gallery-item__title'),
       'counter': this._card.querySelector('.gallery-item__like-counter')
     }
-
+    if(this._userInfo._id !== this._owner._id) {
+      this._cardProperties.trash.remove();
+    }
     this._cardProperties.img.setAttribute('src', `${this._link}`);
     this._cardProperties.img.setAttribute('alt', `${this._name}`);
     this._cardProperties.title.textContent = this._name;

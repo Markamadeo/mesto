@@ -26,6 +26,8 @@
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__text/footer__text.css");
 @import url("../blocks/form/form.css");
+@import url("../blocks/form/_type/form_type_delete-card.css");
+
 @import url("../blocks/form/_type/form_type_adding.css");
 @import url("../blocks/form/_type/form_type_edit.css");
 @import url("../blocks/form/_type/form_type_foto-viewer.css");
@@ -35,6 +37,7 @@
 @import url("../blocks/form/_status/form_status_active.css");
 @import url("../blocks/form/__title/form__title.css");
 @import url("../blocks/form/__title/_type/form__title_type_adding.css");
+@import url("../blocks/form/__title/_type/form__title_type_delete.css");
 @import url("../blocks/form/__title/_type/form__title_type_edit.css");
 @import url("../blocks/form/__textinput/form__textinput.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_adding-name.css");
@@ -46,6 +49,7 @@
 @import url("../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css");
 @import url("../blocks/form/__submit-button/_type/form__submit-button_type_adding-add-button.css");
 @import url("../blocks/form/__submit-button/_type/form__submit-button_type_edit-save-button.css");
+@import url("../blocks/form/__submit-button/_type/form__submit-button_type_delete-button.css");
 @import url("../blocks/form/__foto-viewer-img/form__foto-viewer-img.css");
 @import url("../blocks/form/__foto-viewer-description/form__foto-viewer-description.css");
 @import url("../blocks/form/__container/form__container.css");
@@ -53,7 +57,9 @@
 @import url("../blocks/form/__container/_type/form__container_type_edit.css");
 @import url("../blocks/form/__container/_type/form__container_type_foto-viewer.css");
 @import url("../blocks/form/__container/_type/form__container_type_submit-form.css");
+@import url("../blocks/form/__container/_type/form__container_type_delete.css");
 @import url("../blocks/form/__close-button/form__close-button.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_adding.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_edit.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_foto-viewer-close-button.css");
+@import url("../blocks/form/__close-button/_type/form__close-button_type_delete.css");
