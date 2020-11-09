@@ -44,12 +44,13 @@ function submitAddingForm () {
     })
 };
 
-
 function submitDeleteForm () {
-  debugger
-  this._data;
+  api.deleteCard(this._data)
+    .then(() => {
+      this._target.parentNode.remove();
+      this._close();
+    })
 }
-
 
 const openEditForm = () => {
   const userData = userInfo.getUserinfo();
@@ -95,6 +96,8 @@ const formEditValidator = new FormValidator(paramsForValidationOfForm, '.form__c
 formEditValidator.enableValidation();
 const formAddingValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_adding');
 formAddingValidator.enableValidation();
+const formDeleteCard = new FormValidator(paramsForValidationOfForm, '.form__container_type_delete');
+formDeleteCard.enableValidation();
 
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);

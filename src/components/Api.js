@@ -71,4 +71,22 @@ export default class Api {
       })
       .catch(err => alert(err));
   }
+
+  deleteCard(id) {
+    return fetch(
+      this.baseUrl + `/cards/${id}`,
+      {
+        method: 'DELETE',
+        headers: this.headers
+      }
+    )
+    .then(res => {
+      if (res.ok) {
+        console.log('Карточка удалена!');
+      } else {
+        return Promise.reject(`Ошибка: не удалось удалить карточку на сервере, статус ${res.status}`);
+      }
+    })
+    .catch(err => alert(err));
+  }
 }

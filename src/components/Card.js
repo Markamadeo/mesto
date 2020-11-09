@@ -24,8 +24,8 @@ export class Card {
   }
 
   _deleteHandler() {
-    this._cardProperties.trash.addEventListener('click', () => {
-      this._openDeleteForm(this._cardId);
+    this._cardProperties.trash.addEventListener('click', (evt) => {
+      this._openDeleteForm(this._cardId, evt.target);
     });
   }
 

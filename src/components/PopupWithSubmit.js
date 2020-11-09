@@ -7,8 +7,9 @@ export default class PopupWithSubmit extends Popup {
     this._submit = submit.bind(this);
   }
 
-  open (data) {
+  open (data, target) {
     this._data = data;
+    this._target = target;
     super.open();
     this.setEventListeners();
   }
