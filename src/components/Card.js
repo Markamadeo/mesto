@@ -4,6 +4,8 @@ export class Card {
     this._link = data.link;
     this._selector = selector;
     this._openViewerForm = openViewerForm;
+    this._cardId = data._id;
+    this._likes = data.likes;
   }
 
   _getTamplate() {
@@ -44,12 +46,14 @@ export class Card {
       'img': this._card.querySelector('.gallery-item__image'),
       'like': this._card.querySelector('.gallery-item__heart-button'),
       'trash':  this._card.querySelector('.gallery-item__trash-button'),
-      'title': this._card.querySelector('.gallery-item__title')
+      'title': this._card.querySelector('.gallery-item__title'),
+      'counter': this._card.querySelector('.gallery-item__like-counter')
     }
 
     this._cardProperties.img.setAttribute('src', `${this._link}`);
     this._cardProperties.img.setAttribute('alt', `${this._name}`);
     this._cardProperties.title.textContent = this._name;
+    this._cardProperties.counter.textContent = this._likes.length;
     this._setEventListeners();
 
     return this._card;
