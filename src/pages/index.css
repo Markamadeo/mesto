@@ -5,6 +5,8 @@
 @import url("../blocks/header/header.css");
 @import url("../blocks/header/__logo/header__logo.css");
 @import url("../blocks/profile/profile.css");
+@import url("../blocks/profile/__avatar-container/profile__avatar-container.css");
+@import url("../blocks/profile/__avatar-button/profile__avatar-button.css");
 @import url("../blocks/profile/__image/profile__image.css");
 @import url("../blocks/profile/__info-container/profile__info-container.css");
 @import url("../blocks/profile/__info-container-item/profile__info-container-item.css");
@@ -27,7 +29,7 @@
 @import url("../blocks/footer/__text/footer__text.css");
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/_type/form_type_delete-card.css");
-
+@import url("../blocks/form/_type/form_type_change-avatar.css");
 @import url("../blocks/form/_type/form_type_adding.css");
 @import url("../blocks/form/_type/form_type_edit.css");
 @import url("../blocks/form/_type/form_type_foto-viewer.css");
@@ -38,6 +40,7 @@
 @import url("../blocks/form/__title/form__title.css");
 @import url("../blocks/form/__title/_type/form__title_type_adding.css");
 @import url("../blocks/form/__title/_type/form__title_type_delete.css");
+@import url("../blocks/form/__title/_type/form__title_type_change-avatar.css");
 @import url("../blocks/form/__title/_type/form__title_type_edit.css");
 @import url("../blocks/form/__textinput/form__textinput.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_adding-name.css");
@@ -45,6 +48,7 @@
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-description.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_edit-full-name.css");
 @import url("../blocks/form/__textinput/_type/form__textinput_type_error.css");
+@import url("../blocks/form/__textinput/_type/form__textinput_type_change-avatar.css");
 @import url("../blocks/form/__submit-button/form__submit-button.css");
 @import url("../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css");
 @import url("../blocks/form/__submit-button/_type/form__submit-button_type_adding-add-button.css");
@@ -58,8 +62,10 @@
 @import url("../blocks/form/__container/_type/form__container_type_foto-viewer.css");
 @import url("../blocks/form/__container/_type/form__container_type_submit-form.css");
 @import url("../blocks/form/__container/_type/form__container_type_delete.css");
+@import url("../blocks/form/__container/_type/form__container_type_change-avatar.css");
 @import url("../blocks/form/__close-button/form__close-button.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_adding.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_edit.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_foto-viewer-close-button.css");
 @import url("../blocks/form/__close-button/_type/form__close-button_type_delete.css");
+@import url("../blocks/form/__close-button/_type/form__close-button_type_change-avatar.css");
