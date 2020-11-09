@@ -1,5 +1,5 @@
 export class Card {
-  constructor (data, selector, openViewerForm, openDeleteForm, userInfo, api) {
+  constructor (data, selector, openViewerForm, openDeleteForm, userInfo, removeLikePhoto, addLikePhoto) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
@@ -9,7 +9,8 @@ export class Card {
     this._likes = data.likes;
     this._owner = data.owner;
     this._userInfo = userInfo;
-    this._api = api;
+    this._removeLikePhoto = removeLikePhoto;
+    this._addLikePhoto = addLikePhoto;
     this._like = false;
   }
 
@@ -22,14 +23,14 @@ export class Card {
   _likeHandler() {
     this._cardProperties.like.addEventListener('click', () => {
       if(this._like) {
-        this._api.removeLikePhoto(this._cardId)
+        this._removeLikePhoto(this._cardId)
           .then(data => {
             this._like = false;
             this._cardProperties.counter.textContent = data.likes.length;
             this._cardProperties.like.classList.toggle('gallery-item__heart-button_type_active');
           })
       } else {
-        this._api.addLikePhoto(this._cardId)
+        this._addLikePhoto(this._cardId)
         .then(data => {
           this._like = true;
           this._cardProperties.counter.textContent = data.likes.length;

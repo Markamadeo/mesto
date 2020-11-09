@@ -85,11 +85,16 @@ const openAvatarForm = () => {
   pupupAvatarForm.open();
 }
 
-api.initialCards()
-  .then(data => {
+Promise.all([
+  api.getUserInfo(),
+  api.initialCards(),
+])
+  .then( ([userData, initialCards]) => {
+    userInfo.loadUserInfo(userData);
+
     galleryItems = new Section(
       {
-        items: data,
+        items: initialCards,
         renderer: (item) => {
         return createNewCard(
           item,
@@ -97,7 +102,8 @@ api.initialCards()
           popupPhotoViewer.open.bind(popupPhotoViewer),
           popupDeleteForm.open.bind(popupDeleteForm),
           userInfo,
-          api
+          api.removeLikePhoto.bind(api),
+          api.addLikePhoto.bind(api)
           );
         }
       },
@@ -105,8 +111,10 @@ api.initialCards()
     );
     galleryItems.renderItems();
   })
+  .catch((err) => {
+    console.log(err);
+  });
 
-api.getUserInfo().then(data => userInfo.loadUserInfo(data));
 let galleryItems;
 const userInfo = new UserInfo({nameOnPage: nameUserOnPage, userDescription: aboutUserOnPage, userAvatar: avatarUserOnPage});
 const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
