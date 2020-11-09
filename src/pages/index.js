@@ -1,5 +1,5 @@
 import './index.css';
-import { paramsForValidationOfForm, profileEditButton, profileAddingButton, editFormFullName, editFormDescription, submitButton, nameUserOnPage, aboutUserOnPage, avatarUserOnPage} from '../utils/constants.js';
+import { paramsForValidationOfForm, profileEditButton, profileAddingButton, changeAvatarButton, editFormFullName, editFormDescription, submitButton, nameUserOnPage, aboutUserOnPage, avatarUserOnPage} from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js';
@@ -24,7 +24,8 @@ function submitEditForm (evt) {
     })
 };
 
-function submitAddingForm () {
+function submitAddingForm (evt) {
+  evt.target.elements.addingSubmit.textContent = 'Добавить...';
   const dataUser = this._getInputsValues();
   const dataInput = {
     name: dataUser.value0,
@@ -41,14 +42,28 @@ function submitAddingForm () {
         api
       );
       galleryItems.addItemTheFirst(card);
+      evt.target.elements.addingSubmit.textContent = 'Добавить';
       this.close();
     })
 };
 
-function submitDeleteForm () {
+function submitDeleteForm (evt) {
+  evt.target.elements.deleteSubmit.textContent = 'Да...';
   api.deleteCard(this._data)
     .then(() => {
-      this._target.parentNode.remove();
+    this._target.parentNode.remove();
+    evt.target.elements.deleteSubmit.textContent = 'Да';
+    this._close();
+    })
+}
+
+function submitChangeAvatar (evt) {
+  evt.target.elements.avatarSubmit.textContent = 'Сохранить...';
+  const dataUser = this._getInputsValues();
+  api.changeAvatar(dataUser)
+    .then(data => {
+      userInfo.loadUserInfo(data);
+      evt.target.elements.avatarSubmit.textContent = 'Сохранить';
       this._close();
     })
 }
@@ -65,6 +80,11 @@ const openAddingForm = () => {
   submitButton.classList.add('form__submit-button_disabled');
   popupAddingForm.open();
 };
+
+const openAvatarForm = () => {
+  pupupAvatarForm.open();
+}
+
 api.initialCards()
   .then(data => {
     galleryItems = new Section(
@@ -93,6 +113,7 @@ const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
 const popupEditForm = new PopupWithForm('.form_type_edit', submitEditForm);
 const popupAddingForm = new PopupWithForm('.form_type_adding', submitAddingForm);
 const popupDeleteForm = new PopupWithSubmit('.form_type_delete-card', submitDeleteForm);
+const pupupAvatarForm = new PopupWithForm('.form_type_change-avatar', submitChangeAvatar)
 
 const formEditValidator = new FormValidator(paramsForValidationOfForm, '.form__container_type_edit');
 formEditValidator.enableValidation();
@@ -100,7 +121,9 @@ const formAddingValidator = new FormValidator(paramsForValidationOfForm, '.form_
 formAddingValidator.enableValidation();
 const formDeleteCard = new FormValidator(paramsForValidationOfForm, '.form__container_type_delete');
 formDeleteCard.enableValidation();
+const formChangeAvatar = new FormValidator(paramsForValidationOfForm, '.form__container_type_change-avatar')
+formChangeAvatar.enableValidation();
 
 profileEditButton.addEventListener('click', openEditForm);
 profileAddingButton.addEventListener('click', openAddingForm);
-
+changeAvatarButton.addEventListener('click', openAvatarForm);

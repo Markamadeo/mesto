@@ -1,5 +1,6 @@
 export const profileEditButton = document.querySelector('.profile__edit-botton');
 export const profileAddingButton = document.querySelector('.profile__add-botton');
+export const changeAvatarButton = document.querySelector('.profile__avatar-button');
 export const popupAddingForm = document.querySelector('.form_type_adding');
 export const editFormFullName = document.querySelector('.form__textinput_type_edit-full-name');
 export const editFormDescription = document.querySelector('.form__textinput_type_edit-description');

@@ -125,4 +125,25 @@ export default class Api {
     })
     .catch(err => alert(err));
   }
+
+  changeAvatar(link) {
+    return fetch(
+      this.baseUrl + '/users/me/avatar',
+      {
+        method: 'PATCH',
+        headers: this.headers,
+        body: JSON.stringify({
+          avatar: link.value0,
+        })
+      }
+    )
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: не удалось отправить аватар пользователя на сервер, статус ${res.status}`);
+      })
+      .catch(err => alert(err));
+  }
 }
