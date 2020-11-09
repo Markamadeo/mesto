@@ -29,9 +29,12 @@ function submitAddingForm () {
     name: dataUser.value0,
     link: dataUser.value1
   };
-  const card = createNewCard(dataInput, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
-  galleryItems.addItem(card);
-  this.close();
+  api.sendNewCard(dataInput)
+    .then(data => {
+      const card = createNewCard(data, '#gallery-item', popupPhotoViewer.open.bind(popupPhotoViewer));
+      galleryItems.addItemTheFirst(card);
+      this.close();
+    })
 };
 
 const openEditForm = () => {
@@ -46,12 +49,9 @@ const openAddingForm = () => {
   submitButton.classList.add('form__submit-button_disabled');
   popupAddingForm.open();
 };
-
-
-
 api.initialCards()
   .then(data => {
-    const galleryItems = new Section(
+    galleryItems = new Section(
       {
         items: data,
         renderer: (item) => {
@@ -64,8 +64,8 @@ api.initialCards()
   })
 
 api.getUserInfo().then(data => userInfo.loadUserInfo(data));
-
-const userInfo = new UserInfo({nameOnPage: nameUserOnPage, userDescription: aboutUserOnPage, userAvatar: avatarUserOnPage}, api);
+let galleryItems;
+const userInfo = new UserInfo({nameOnPage: nameUserOnPage, userDescription: aboutUserOnPage, userAvatar: avatarUserOnPage});
 const popupPhotoViewer = new PopupWithImage('.form_type_foto-viewer');
 const popupEditForm = new PopupWithForm('.form_type_edit', submitEditForm);
 const popupAddingForm = new PopupWithForm('.form_type_adding', submitAddingForm);

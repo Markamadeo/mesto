@@ -17,5 +17,3 @@ export const paramsForValidationOfForm = {
   inputErrorClass: 'form__textinput_type_error',
   errorClass: 'form__error_visible'
 };
-
-

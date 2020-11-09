@@ -45,7 +45,29 @@ export default class Api {
           return res.json();
         }
 
-        return Promise.reject(`Ошибка: не удалось отправить данные пользователя, статус ${res.status}`);
+        return Promise.reject(`Ошибка: не удалось отправить данные пользователя на сервер, статус ${res.status}`);
+      })
+      .catch(err => alert(err));
+  }
+
+  sendNewCard(data) {
+    return fetch(
+      this.baseUrl + '/cards',
+      {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify({
+          name: data.name,
+          link: data.link
+        })
+      }
+    )
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(`Ошибка: не удалось отправить данные карточки на сервер, статус ${res.status}`);
       })
       .catch(err => alert(err));
   }

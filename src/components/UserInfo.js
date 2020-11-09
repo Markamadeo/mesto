@@ -1,5 +1,5 @@
 export default class UserInfo {
-  constructor( {nameOnPage, userDescription, userAvatar}, api ) {
+  constructor( {nameOnPage, userDescription, userAvatar}) {
     this._nameOnPage = nameOnPage;
     this._userDescription = userDescription;
     this._userAvatar = userAvatar;
